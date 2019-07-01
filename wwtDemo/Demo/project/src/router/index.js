@@ -10,8 +10,7 @@ import shop1 from '@/components/shop1'
 import login from '@/components/login'
 //重置密码界面
 import reset from '@/components/reset'
-// 登录之后的主界面
-import adresslogin from '@/components/adresslogin'
+
 
 //  外卖     搜索      订单       我的
 import takeout from '@/components/takeout'
@@ -112,6 +111,10 @@ import dingdan from '@/components/dingdan'
 // foods
 import foods from '@/components/foods'
 
+//sousuo2
+import sousuo2 from '@/components/sousuo2'
+
+
 
 Vue.use(Router)
 export default new Router({
@@ -137,11 +140,6 @@ export default new Router({
       path: '/reset',
       name: 'reset',
       component: reset
-    },
-    {
-      path: '/adresslogin',
-      name: 'adresslogin',
-      component: adresslogin
     },
     //  外卖     搜索      订单       我的
     {
@@ -365,6 +363,12 @@ export default new Router({
       path: '/qiye',
       name: 'qiye',
       component: qiye
+    },
+    // sousuo2
+    {
+      path: '/sousuo2',
+      name: 'sousuo2',
+      component: sousuo2
     },
 
   ]

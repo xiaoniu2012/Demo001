@@ -45,4 +45,6 @@
     //   {id:4,text:"红康",vip:false},
     //   {id:5,text:"赵鑫",vip:true}
     // ]
+    //判断是否小人
+    whc:true
   }

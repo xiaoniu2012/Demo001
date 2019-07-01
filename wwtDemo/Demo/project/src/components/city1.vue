@@ -59,7 +59,7 @@ export default {
       this.$router.back();
     },
     jumpshop1(i){
-          this.$store.commit("getgeohash", this.xidi[i].geohash);
+          this.$store.commit("jing", this.xidi[i].geohash);
           console.log(this.xidi[i].geohash);
           console.log(i)
          this.$router.push({

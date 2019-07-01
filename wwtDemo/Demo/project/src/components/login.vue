@@ -84,12 +84,13 @@ export default {
         } else {
           //登陆成功，跳转到首页,编程式路由跳转，传值query或者params传值
           this.$router.push({
-            name: "adresslogin"
+            name: "adress"
             // query:{
             //  username:res.data.username
             // }
           });
         }
+        this.$store.commit('xiugai',false)
       });
     },
     display(){
@@ -110,12 +111,12 @@ export default {
   overflow: hidden;
 }
 #top {
-  height: 50px;
+  height: 0.45rem;
   background-color: rgb(49, 144, 232);
   position: relative;
 }
 #back img {
-  height: 20px;
+  height: 0.18rem;
   position: absolute;
   left: 5%;
   top: 50%;

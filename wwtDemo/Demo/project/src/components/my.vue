@@ -2,17 +2,17 @@
   <div id="wrap">
     <!-- 头部部分 -->
     <div id="toubu">
-      <img @click="back()" src="../assets/img/zuojian.png" alt>
+      <img @click="back()" src="../assets/img/zuojian.png" alt />
 
       <p>我的</p>
 
       <div id="wdtz" @click="judge()">
-        <img v-if="pdimg" class="touxiang" :src="imageUrl">
-        <img v-else class="touxiang" src="../assets/img/tupian.jpg" alt="">
+        <img v-if="pdimg" class="touxiang" :src="imageUrl" />
+        <img v-else class="touxiang" src="../assets/img/tupian.jpg" alt />
         <p>{{this.$store.state.username||login}}</p>
-        <img src="../assets/img/shouji3.png" alt>
+        <img src="../assets/img/shouji3.png" alt />
         <p>暂无绑定手机号</p>
-        <img id="youbiao" src="../assets/img/right.png" alt>
+        <img id="youbiao" src="../assets/img/right.png" alt />
       </div>
     </div>
     <div id="zhong1">
@@ -41,42 +41,42 @@
 
     <router-link to="/bos">
       <div id="dingdan">
-        <img src="../assets/img/dingdan.png" alt>
+        <img src="../assets/img/dingdan.png" alt />
         <div>
           <p class="zi">我的订单</p>
-          <img class="ddtp" src="../assets/img/youjian.png" alt>
+          <img class="ddtp" src="../assets/img/youjian.png" alt />
         </div>
       </div>
     </router-link>
     <router-link to="/score">
       <div id="jfsc">
-        <img src="../assets/img/商家.png" alt>
+        <img src="../assets/img/shangjia002.png" alt />
         <div>
           <p class="zi">积分商城</p>
-          <img class="ddtp" src="../assets/img/youjian.png" alt>
+          <img class="ddtp" src="../assets/img/youjian.png" alt />
         </div>
       </div>
     </router-link>
     <div id="hyk" @click="membercenter()">
-      <img src="../assets/img/huangguan.png" alt>
+      <img src="../assets/img/huangguan.png" alt />
       <div>
         <p class="zi">饿了吗会员卡</p>
-        <img class="ddtp" src="../assets/img/youjian.png" alt>
+        <img class="ddtp" src="../assets/img/youjian.png" alt />
       </div>
     </div>
     <div id="fwzx" @click="fwzx()">
       <span id="fk"></span>
       <div>
         <p class="zi">服务中心</p>
-        <img src="../assets/img/youjian.png" alt>
+        <img src="../assets/img/youjian.png" alt />
       </div>
     </div>
     <router-link to="/download">
       <div id="elm">
-        <img src="../assets/img/eliaomo.png" alt>
+        <img src="../assets/img/eliaomo.png" alt />
         <div>
           <p class="zi">下载饿了么APP</p>
-          <img class="ddtp" src="../assets/img/youjian.png" alt>
+          <img class="ddtp" src="../assets/img/youjian.png" alt />
         </div>
       </div>
     </router-link>
@@ -84,28 +84,28 @@
     <footer>
       <div>
         <router-link to="/takeout">
-          <img src="../assets/img/SSS.png">
-          <br>
+          <img src="../assets/img/SSS.png" />
+          <br />
           <span>外卖</span>
         </router-link>
       </div>
       <div>
         <router-link to="/search">
-          <img src="../assets/img/zhinanzhen.png">
-          <br>
+          <img src="../assets/img/zhinanzhen.png" />
+          <br />
           <span>搜索</span>
         </router-link>
       </div>
       <div>
         <router-link to="/bos">
-          <img src="../assets/img/dingdan1.png">
-          <br>
+          <img src="../assets/img/dingdan1.png" />
+          <br />
           <span>订单</span>
         </router-link>
       </div>
       <div @click="my()">
-        <img src="../assets/img/touxiang1.png">
-        <br>
+        <img src="../assets/img/touxiang1.png" />
+        <br />
         <span>我的</span>
       </div>
     </footer>
@@ -117,9 +117,9 @@ export default {
   name: "my",
   data() {
     return {
-      login: "登录/注册",      // img2: thias.$store.state.img
-      imageUrl:"",
-      pdimg:true
+      login: "登录/注册", // img2: thias.$store.state.img
+      imageUrl: "",
+      pdimg: true
     };
   },
   // computed: {
@@ -148,16 +148,16 @@ export default {
     // 方法三
   },
   methods: {
-    getSrc(){
-            const api = "https://elm.cangdu.org/v1/user/"+this.$store.state.userid
-            this.$http({
-                url:api,
-                method:"get"
-            }).then(res=>{
-                this.imageUrl="https://elm.cangdu.org/img/"+res.data.avatar;
-                console.log(this.imageUrl);
-            })
-        },
+    getSrc() {
+      const api = "https://elm.cangdu.org/v1/user/" + this.$store.state.userid;
+      this.$http({
+        url: api,
+        method: "get"
+      }).then(res => {
+        this.imageUrl = "https://elm.cangdu.org/img/" + res.data.avatar;
+        console.log(this.imageUrl);
+      });
+    },
     judge() {
       if (this.$store.state.username) {
         this.$router.push({

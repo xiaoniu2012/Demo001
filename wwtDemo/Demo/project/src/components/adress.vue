@@ -1,15 +1,14 @@
 <template>
   <div id="home">
     <div id="top">
-      
-        <p>ele.me</p>
-        <p><router-link to="/login">登陆/注册</router-link></p>
-      
+      <p>ele.me</p>
+      <p @click="tiaozhuan()" v-if="asda" class="denglu">{{zhuce}}</p>
+      <p @click="tiaozhuan()" v-else  class="denglu"><img :src="denglu" alt=""></p>
     </div>
     <div id="city" @click="ding()">
       <p>当前定位城市:</p>
       <div>{{dingcity}}</div>
-      <img src="../assets/1.png" alt id="tu">
+      <img src="../assets/1.png" alt id="tu" />
     </div>
     <div id="hot">
       <p>热门城市</p>
@@ -42,7 +41,11 @@ export default {
       datas: [],
       allCitys: {},
       dingcity: "",
-      city:""
+      city: "",
+      show:true,
+      show2:false,
+      zhuce:"登陆/注册",
+      denglu:require("../assets/img/tupian.jpg")
     };
   },
   created() {
@@ -50,6 +53,11 @@ export default {
     this.allcity();
     this.allcity();
     this.geohash();
+  },
+  computed: {
+    asda(){
+      return this.$store.state.whc;
+    }
   },
   methods: {
     getcity() {
@@ -88,6 +96,7 @@ export default {
         }
       });
     },
+    //定位城市
     geohash() {
       const api = "https://elm.cangdu.org/v1/cities?type=guess";
       this.$http({
@@ -100,8 +109,8 @@ export default {
         //请求返回的数据res
         // console.log(res);
         this.dingcity = res.data.name;
-        this.city=res.data.id;
-        console.log(this.city);
+        this.city = res.data.id;
+        
       });
     },
     chuanzhi(v) {
@@ -116,13 +125,13 @@ export default {
         //请求返回的数据res
         console.log(res);
         this.$router.push({
-          name: "city1",
+          name: "sousuo2",
           query: res.data
         });
       });
     },
-     ding(){
-       const api = "https://elm.cangdu.org/v1/cities/" +this.city;
+    ding() {
+      const api = "https://elm.cangdu.org/v1/cities/" + this.city;
       this.$http({
         url: api,
         methods: "get",
@@ -133,11 +142,31 @@ export default {
         //请求返回的数据res
         console.log(res);
         this.$router.push({
-          name: "city1",
+          name: "sousuo2",
           query: res.data
         });
       });
     },
+    tiaozhuan(){
+
+      if(this.$store.state.username){
+        this.show="false"
+        this.show2="true"
+
+        this.$router.push({
+          name:"my"
+        })
+      }
+      else{
+        this.show="true"
+        this.show2="false"
+        this.$router.push({
+
+          name:"login"
+        })
+      }
+
+    }
   }
 };
 </script>
@@ -212,10 +241,13 @@ export default {
   float: left;
   margin-left: 5px;
 }
-#top p:nth-child(2) {
+.denglu {
   line-height: 50px;
   float: right;
   margin-right: 5px;
+}
+.denglu img{
+  width: 0.25rem;
 }
 #city {
   background-color: whitesmoke;

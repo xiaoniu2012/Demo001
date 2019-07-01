@@ -81,7 +81,9 @@ goujian(state,c){
     }
   }
 },
-
+xiugai(state,v){
+  this.state.whc=v
+}
 
 
 

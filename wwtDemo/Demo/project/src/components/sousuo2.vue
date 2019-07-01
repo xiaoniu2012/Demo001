@@ -1,14 +1,14 @@
 <template>
   <div>
     <div id="header">
-      <span>{{name}}</span>
+      <span>{{dizhi.name}}</span>
     </div>
     <div id="xinxi">
       <input id="shuru" v-model="keyword" placeholder="输入学校、商务楼、地址" type="text">
       <button @click="search()" id="tijiao">提交</button>
     </div>
     <ul>
-      <li :key="i" v-for="(v,i) in food">
+      <li :key="i" v-for="(v,i) in food" @click="jumpshop1(i)">
         <h3>{{v.name}}</h3>
         <p style="color:gray">{{v.address}}</p>
       </li>
@@ -23,15 +23,24 @@ export default {
       name: "",
       id: "",
       keyword: "",
-      food: ""
+      food: "",
+      dizhi:""
     };
   },
   created() {
     this.Add();
+    this.dizhi=this.$route.query;
+    // this.name=this.$route.query.dingcity;
+    console.log(this.name);
+    this.$store.commit("chengid",this.$route.query.id);
+    console.log(this.$route.query.id);
+
+    
   },
   methods: {
     Add() {
-    //   this.name = this.$route.query.cityName;
+      // this.name = this.$route.query.cityName;
+
       this.id = this.$route.query;
     },
     search() {
@@ -40,7 +49,7 @@ export default {
       } else {
         const api =
           "https://elm.cangdu.org/v1/pois?city_id=" +
-          this.id +
+          this.dizhi.id +
           "&keyword=" +
           this.keyword +
           "&type=search";
@@ -55,6 +64,14 @@ export default {
         //   }
         });
       }
+    },
+    jumpshop1(i){
+          this.$store.commit("jing", this.food[i].geohash);
+          console.log(this.food[i].geohash);
+          console.log(i)
+         this.$router.push({
+              name:"shop1"
+         })
     }
   }
 };

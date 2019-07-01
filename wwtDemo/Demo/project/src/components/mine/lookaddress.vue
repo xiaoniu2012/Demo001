@@ -31,14 +31,16 @@ export default {
     return {
       datas: "",
       keyword: "",
-      zhanshi: true
+      zhanshi: true,
     };
   },
+
   methods: {
+    //接口文档  3. https://elm.cangdu.org/v1/pois?city_id=1&keyword=迪士尼&type=search
     confirm() {
       const api =
         "https://elm.cangdu.org/v1/pois?city_id=" +
-        this.user_id +
+        this.$store.state.cityid1 +
         "&keyword=" +
         this.keyword +
         "&type=search";

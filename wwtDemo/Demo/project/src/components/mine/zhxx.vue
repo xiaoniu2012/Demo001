@@ -127,6 +127,7 @@ export default {
       this.$store.state.username = "",
       this.$store.commit("getlength",0);
       this.$store.commit("initImageUrl");
+      this.$store.commit('xiugai',true)
 
       // this.$store.state.imageUrl = "",
         this.$router.push({

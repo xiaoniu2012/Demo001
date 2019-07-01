@@ -41,7 +41,8 @@
           <img src="../assets/img/weibiaoti2fuzhi14.png" alt>
           <div>附近商家</div>
         </div>
-        <div :key="i" v-for="(v,i) in data2" id="bottom2" @click="quid(v)">
+
+        <div :key="i" v-for="(v,i) in data2" id="bottom2" @click="quid(v)" >
           <router-link
             :to="'/shangjia?cityId=' + v.name + '&image1=' + v.image_path +'&image2=' + v.id +'&fei='+ v.float_delivery_fee"
           >
@@ -51,9 +52,9 @@
             <div id="left">
               <div id="pai">品牌</div>
               <div id="ming">{{v.name}}</div>
-              <div id="ping">
-                <el-rate v-model="v.rating" disabled show-score text-color="#ff9900"></el-rate>
-                <span>{{v.rating}}</span>
+              <div id="ping" v-if="v.rating">
+                <el-rate v-model="v.rating" disabled show-score text-color="#ff9900" score-template="{value}"></el-rate>
+                <span v-if="v.rating">{{v.rating}}</span>
               </div>
               <div id="sale">
                 <span>月售</span>
@@ -73,10 +74,12 @@
               </div>
             </div>
           </router-link>
-          <div id="right">
+
+
+          <div id="right" v-if="v.supports">
             <div id="top1" v-if="v.supports[0]">
               {{v.supports[0].icon_name}}
-              <span v-if="v.supports[1]">{{v.supports[1].icon_name}}</span>
+        <span v-if="v.supports[1]">{{v.supports[1].icon_name}}</span>
             </div>
             <div id="center1">
               <div id="a1">蜂鸟专送</div>
@@ -90,9 +93,13 @@
               </div>
             </div>
           </div>
+
+          
         </div>
+        
       </div>
     </div>
+    
     <div id="fan" @click="fanhui()">
       <img src="../assets/img/juli.png">
     </div>
@@ -277,7 +284,6 @@ export default {
             if (res.data[i].category == this.namestring) {
               // console.log("aaa");
               this.data2.push(res.data[i]);
-             
               console.log(this.data2);
             }
           }
